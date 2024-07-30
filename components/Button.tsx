@@ -1,4 +1,4 @@
-import React, { ComponentProps, Dispatch, SetStateAction } from 'react'
+import React, { ComponentProps, Dispatch, SetStateAction, useEffect, useRef, useState } from 'react'
 
 type Color = "red" | "blue" | "green";
 // type ButtonProps = {
@@ -36,18 +36,18 @@ type SuperButtonProps = ButtonProps & {
 // }
 // React.ComponentPropsWithoutRef<"button"> --> if using reference
 
-const Button = ({ type, color }: ButtonProps) => {
-    const handleClick = (
-        event: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
-        console.log("Clicked")
-    return (
-        <button
-            onClick={handleClick}
-        >
-            Click Me
-        </button>
-    )
-}
+// const Button = ({ type, color }: ButtonProps) => {
+//     const handleClick = (
+//         event: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
+//         console.log("Clicked")
+//     return (
+//         <button
+//             onClick={handleClick}
+//         >
+//             Click Me
+//         </button>
+//     )
+// }
 
 // type ButtonProps = {
 //     // onClick: () => void
@@ -82,5 +82,38 @@ const Button = ({ type, color }: ButtonProps) => {
 //         </button>
 //     )
 // }
+
+// type User = {
+//     name: string;
+//     age: number
+// }
+
+const buttonTextOptions = [
+    "Click me!",
+    "Click me again!",
+    "Click me one more time",
+] as const
+
+type User = {
+    sessionId: string;
+    name: string
+}
+
+type Guest = Omit<User, "name">
+type ButtonColor = "red" | "blue" | "green"
+const Button = () => {
+    useEffect(() => {
+        const previousButtohnColor = localStorage.getItem("buttonColor") as ButtonColor
+    })
+    const ref = useRef<HTMLButtonElement>(null)
+    return (
+        <button ref={ref}>
+            {buttonTextOptions.map((option) => {
+                return option
+            })}
+        </button>
+    )
+}
+
 
 export default Button
