@@ -23,12 +23,28 @@ type styleProps = {
 //     autoFocus?: boolean
 // }
 
-type ButtonProps = React.ComponentProps<"button">
+type ButtonProps = {
+    type?: "button" | "submit" | "reset";
+    color?: "red" | "blue" | "green";
+}
+type SuperButtonProps = ButtonProps & {
+    size: "md" | "lg"
+}
 
-const Button = ({ type, autoFocus }: ButtonProps) => {
+// type ButtonProps = React.ComponentPropsWithoutRef<"button"> & {
+//     variant?: "primary" | "secondary";
+// }
+// React.ComponentPropsWithoutRef<"button"> --> if using reference
+
+const Button = ({ type, color }: ButtonProps) => {
+    const handleClick = (
+        event: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
+        console.log("Clicked")
     return (
-        <button type={type} autoFocus={autoFocus}>
-
+        <button
+            onClick={handleClick}
+        >
+            Click Me
         </button>
     )
 }
