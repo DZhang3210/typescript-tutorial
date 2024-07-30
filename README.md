@@ -1,3 +1,32 @@
+IMPORTING TYPES FROM OUTSIDE
+import { type ButtonColor } from '@/lib/types'
+
+FULL PIPELINE TO MAKING GENERIC TYPES WITH COMPONENT
+type ButtonProps<T> = {
+    countValue: T;
+    countHistory: T[]
+}
+
+function Button<T>({ countValue, countHistory }: ButtonProps<T>) {
+    return (
+        <div>
+
+        </div>
+    )
+}
+
+USING GENERICS TO SPECIFY CONSISTENT TYPING CONVENTIONS
+~If Specifying variable instead of function must use <T,> instead of <T>
+const convertToArray = <T,>(value: T): T[] => {
+    return [value]
+}
+function convertToArray2<T>(value: T): T[] {
+    return [value]
+}
+
+convertToArray(5)
+convertToArray("hello")
+
 USE AS TO ASSERT A TYPE OVER TYPESCRIPT (TYPICALLY TO RUN FUNCTIONS)
 type ButtonColor = "red" | "blue" | "green"
 const previousButtohnColor = localStorage.getItem("buttonColor") as ButtonColor

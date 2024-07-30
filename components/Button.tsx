@@ -1,6 +1,7 @@
 import React, { ComponentProps, Dispatch, SetStateAction, useEffect, useRef, useState } from 'react'
+import { type ButtonColor } from '@/lib/types'
 
-type Color = "red" | "blue" | "green";
+
 // type ButtonProps = {
 //     backgroundColor: Color
 //     textColor: Color
@@ -23,13 +24,13 @@ type styleProps = {
 //     autoFocus?: boolean
 // }
 
-type ButtonProps = {
-    type?: "button" | "submit" | "reset";
-    color?: "red" | "blue" | "green";
-}
-type SuperButtonProps = ButtonProps & {
-    size: "md" | "lg"
-}
+// type ButtonProps = {
+//     type?: "button" | "submit" | "reset";
+//     color?: "red" | "blue" | "green";
+// }
+// type SuperButtonProps = ButtonProps & {
+//     size: "md" | "lg"
+// }
 
 // type ButtonProps = React.ComponentPropsWithoutRef<"button"> & {
 //     variant?: "primary" | "secondary";
@@ -100,18 +101,34 @@ type User = {
 }
 
 type Guest = Omit<User, "name">
-type ButtonColor = "red" | "blue" | "green"
-const Button = () => {
-    useEffect(() => {
-        const previousButtohnColor = localStorage.getItem("buttonColor") as ButtonColor
-    })
-    const ref = useRef<HTMLButtonElement>(null)
+
+
+
+
+// const Button = () => {
+//     useEffect(() => {
+//         const previousButtohnColor = localStorage.getItem("buttonColor") as ButtonColor
+//     })
+//     const ref = useRef<HTMLButtonElement>(null)
+//     return (
+//         <button ref={ref}>
+//             {buttonTextOptions.map((option) => {
+//                 return option
+//             })}
+//         </button>
+//     )
+// }
+
+type ButtonProps<T> = {
+    countValue: T;
+    countHistory: T[]
+}
+
+function Button<T>({ countValue, countHistory }: ButtonProps<T>) {
     return (
-        <button ref={ref}>
-            {buttonTextOptions.map((option) => {
-                return option
-            })}
-        </button>
+        <div>
+
+        </div>
     )
 }
 
