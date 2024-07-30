@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from 'react'
+import React, { ComponentProps, Dispatch, SetStateAction } from 'react'
 
 type Color = "red" | "blue" | "green";
 // type ButtonProps = {
@@ -18,11 +18,17 @@ type styleProps = {
     style: React.CSSProperties;
 }
 
+// type ButtonProps = {
+//     type: "submit" | "reset" | "button";
+//     autoFocus?: boolean
+// }
 
-const Button = ({ count = 0 }) => {
+type ButtonProps = React.ComponentProps<"button">
+
+const Button = ({ type, autoFocus }: ButtonProps) => {
     return (
-        <button>
-            {count}
+        <button type={type} autoFocus={autoFocus}>
+
         </button>
     )
 }

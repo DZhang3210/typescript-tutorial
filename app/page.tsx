@@ -7,7 +7,7 @@ export default function Home() {
   const [count, setCount] = useState(0)
   return (
     <div>
-      <Button setCount={setCount}>Click Me</Button>
+      <Button type="submit" autoFocus={true}></Button>
     </div>
   );
 }
